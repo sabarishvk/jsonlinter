@@ -11,7 +11,7 @@ display_help() {
 #- Jsonlint -#
 json_linter() {
   logfile=`pwd`/`date +"%Y%m%d%H%M%S"`_jsonlinter.log
-  find `pwd`$json_dir/* -name *.json | sort -u | \
+  find $json_dir/* -name *.json | sort -u | \
   while read json_file
   do
     `which jsonlint` $json_file >> $logfile
@@ -33,7 +33,7 @@ option_parser(){
       exit 1
     ;;
     --jsoninput=*)
-      json_dir=${i#*=}
+      json_dir=${option#*=}
       json_linter $json_dir
       exit 0
     ;;
