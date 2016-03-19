@@ -1,25 +1,37 @@
 ## Synopsis
 
-*jsonlinter* finds all the jsons in a given directory and lints them. This also includes a docker file which executes the code and shows a running example of the code.
+*jsonlinter* finds all the jsons in a given directory and lints them. 
+This also includes a docker file which executes the code and shows a running example of the code.
 
 ## Code Example
 
 sabarishvk@linux$ ./jsonlinter --jsoninput="/home/ubuntu/code/jsonlinter/test"
+
 /home/ubuntu/code/jsonlinter/test/1/1.1/my.json : OK
+
 /home/ubuntu/code/jsonlinter/test/1/1.2/my.json : OK
+
 /home/ubuntu/code/jsonlinter/test/1/1.3/my.json : OK
+
 /home/ubuntu/code/jsonlinter/test/1/1.4/my.json : ERROR
+
 /home/ubuntu/code/jsonlinter/test/1/1.5/my.json : OK
+
 /home/ubuntu/code/jsonlinter/test/2/my.json : OK
+
 /home/ubuntu/code/jsonlinter/test/3/my.json : OK
+
 /home/ubuntu/code/jsonlinter/test/4/my.json : OK
+
 /home/ubuntu/code/jsonlinter/test/5/my.json : OK
+
 Refer to /home/ubuntu/code/jsonlinter/linter/20160319123259_jsonlinter.log for complete details...
+
 
 ## Installation Steps
 
 *Assuming that you have docker environment available :* 
-
+	
 
 
 *Assuming you are running the code on Ubuntu-14 :*
