@@ -30,17 +30,24 @@ Refer to /home/ubuntu/code/jsonlinter/linter/20160319123259_jsonlinter.log for c
 
 ## Installation Steps
 
-*Assuming that you have docker environment available :* 
-	
+*Setting up the Environment:* 
 
+Step1: Clone the repository to access the docker file
+$ git clone https://github.com/sabarishvk/jsonlinter.git
 
-*Assuming you are running the code on Ubuntu-14 :*
+Step2: Build the docker image (Assuming you have a docker environment setup.)
+$ docker build -f Dockerfile
 
-*Step1 :* This step installs python and demjson python package that lints the json
-`sudo apt-get -y update && sudo apt-get -y install python && sudo apt-get -y install python-pip && sudo pip install demjson`
+Step3: Run the container from the image created (ImageID can be fetched from 'docker images' command.)
+$ docker run -i -t 1b807003610b  /bin/bash 
 
-*Step2:* Checkout the code
-`git clone https://github.com/sabarishvk/jsonlinter.git`
+Step4: Start the Container (ContainerID can be fetched from 'docker ps -a' command.)
+$ docker start 271ea3d3a799
 
-*Step3:* Execute jsonlinter (assuming you downloaded the code in ""/home/ubuntu/code")
-`/home/ubuntu/code/jsonlinter/linter/jsonlinter --jsoninput="/home/ubuntu/code/jsonlinter/test"`
+Step5: Access the Ubuntu environment to run commands
+$docker attacht 271ea3d3a799
+
+Step6: The docker checks out the code from github in /opt/jsonlinter. 
+
+Step8: Run the code with test jsons available in test directory
+$ /opt/jsonlinter/linter/jsonlinter --jsoninput="/opt/jsonlinter/test"
