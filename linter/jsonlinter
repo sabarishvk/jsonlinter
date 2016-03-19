@@ -1,0 +1,49 @@
+#!/bin/bash
+
+#- Help Menu -#
+display_help() {
+  echo "Usage: $0 [option=] "
+  echo "Options are:"
+  echo "	--help		display usage options"
+  echo "	--jsoninput	input json directory"
+}
+
+#- Jsonlint -#
+json_linter() {
+  logfile=`pwd`/`date +"%Y%m%d%H%M%S"`_jsonlinter.log
+  find `pwd`$json_dir/* -name *.json | sort -u | \
+  while read json_file
+  do
+    `which jsonlint` $json_file >> $logfile
+    if [ $? -ne 0 ]
+    then
+      echo "$json_file : ERROR"
+    else
+      echo "$json_file : OK"
+    fi
+  done
+  echo "Refer to $logfile for complete details..."
+}
+
+#- Parse Options -#
+option_parser(){
+  case $option in
+    --help) 
+      display_help
+      exit 1
+    ;;
+    --jsoninput=*)
+      json_dir=${i#*=}
+      json_linter $json_dir
+      exit 0
+    ;;
+    *) 
+      display_help
+      exit 1 
+    ;;
+  esac
+}
+
+#- Main -#
+option=$1
+option_parser $option
